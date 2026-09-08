@@ -1,76 +1,50 @@
 # hasib-rns
 
-Cursor plugin marketplace with three installable review skills:
+One Cursor plugin that installs all review skills:
 
-| Plugin | What it does |
+| Skill | What it does |
 | --- | --- |
-| **GDPR Check** | Data-protection review when a change touches personal data |
-| **Backend Security Check** | Security review of APIs, auth, queries, uploads, and server code |
-| **Frontend Security Check** | Security review of UI, XSS, tokens, storage, and route guards |
+| **gdpr-check** | Data-protection review when a change touches personal data |
+| **security-check-be** | Security review of APIs, auth, queries, uploads, and server code |
+| **security-check-fe** | Security review of UI, XSS, tokens, storage, and route guards |
 
-Each plugin is a standard Cursor plugin (`SKILL.md` + `.cursor-plugin/plugin.json`). The repo root has `.cursor-plugin/marketplace.json` so Cursor can import this GitHub repo and list those plugins.
-
-## Install from Cursor
-
-### Option A — add this repo as a Team Marketplace
-
-Needs a Cursor Teams or Enterprise plan.
-
-1. Open [cursor.com/dashboard](https://cursor.com/dashboard) → **Plugins**
-2. Under **Team Marketplaces**, click **Add Marketplace**
-3. Choose **Import from Repo**
-4. Paste: `https://github.com/hasibul-selise/hasib-rns`
-5. Review the three plugins, set install mode (Default Off / Default On / Required), then save
-
-Teammates then open **Customize** in the Cursor sidebar and install the plugins from this marketplace.
-
-### Option B — install from Agent chat
-
-This only works if the GitHub repo is **public**, or Cursor already has GitHub access to this private repo.
-
-In the chat box, pick the `/add-plugin` slash command (do not send it as a normal message):
-
-```text
-/add-plugin hasibul-selise/hasib-rns
+```
+hasib-rns/
+├── .cursor-plugin/plugin.json
+└── skills/
+    ├── gdpr-check/SKILL.md
+    ├── security-check-be/SKILL.md
+    └── security-check-fe/SKILL.md
 ```
 
-Or paste: `https://github.com/hasibul-selise/hasib-rns`
+## Install
 
-### Option C — test locally (before or without publishing)
+### Local (this machine)
 
-Copy or symlink each plugin folder into Cursor's local plugin directory, then reload the window (**Developer: Reload Window**).
-
-PowerShell:
+Copy the plugin into Cursor's local plugin folder, then reload (**Developer: Reload Window**). Cursor rejects symlinks that point outside that folder.
 
 ```powershell
-$local = "$env:USERPROFILE\.cursor\plugins\local"
-New-Item -ItemType Directory -Force -Path $local | Out-Null
-
-$repo = (Get-Location).Path
-foreach ($plugin in @("gdpr-check", "security-check-be", "security-check-fe")) {
-  $link = Join-Path $local $plugin
-  $target = Join-Path $repo "skills\$plugin"
-  if (Test-Path $link) { Remove-Item $link }
-  New-Item -ItemType SymbolicLink -Path $link -Target $target | Out-Null
-}
+$dst = "$env:USERPROFILE\.cursor\plugins\local\hasib-rns"
+$src = (Get-Location).Path
+if (Test-Path $dst) { Remove-Item $dst -Recurse -Force }
+New-Item -ItemType Directory -Force -Path "$dst\.cursor-plugin", "$dst\skills" | Out-Null
+Copy-Item "$src\.cursor-plugin\plugin.json" "$dst\.cursor-plugin\plugin.json"
+Copy-Item "$src\skills\*" "$dst\skills" -Recurse -Force
 ```
 
-On Teams/Enterprise, local plugin imports may be disabled by an admin (**Dashboard → Settings → Security & Identity → Marketplace and Plugins**).
+On Teams/Enterprise, local plugin imports may be disabled by an admin.
 
-After a reload, open **Customize** and confirm the skills appear. Invoke one in chat with `/gdpr-check`, `/security-check-be`, or `/security-check-fe`.
+### From GitHub
 
-## After you push
+Works if the repo is **public**, or Cursor has GitHub access to this private repo.
 
-Cursor indexes plugins from GitHub. After the first import:
+- Agent chat slash command: `/add-plugin hasibul-selise/hasib-rns`
+- Or **Customize** → install `hasib-rns`
 
-- Turn on **Enable Auto Refresh** on the marketplace (requires the Cursor GitHub App on this repo), or
-- Click **Refresh** on the marketplace after you push changes
+After install, open **Customize** and confirm one plugin: **Hasib RNS**, with all three skills. Invoke them with `/gdpr-check`, `/security-check-be`, or `/security-check-fe`.
 
-Bump the `version` in that plugin's `.cursor-plugin/plugin.json` (and the matching entry in `.cursor-plugin/marketplace.json`) when you ship an update.
+## Add another skill
 
-## Add another plugin later
-
-1. Create `skills/my-skill/SKILL.md` (YAML `name` + `description` in the frontmatter)
-2. Add `skills/my-skill/.cursor-plugin/plugin.json` with a unique kebab-case `name`
-3. Add a matching entry to `.cursor-plugin/marketplace.json` with `"source": "skills/my-skill"`
-4. Push, then refresh the marketplace in the Cursor dashboard
+1. Create `skills/my-skill/SKILL.md` with YAML `name` and `description`
+2. Bump `version` in `.cursor-plugin/plugin.json`
+3. Copy the updated plugin into `~\.cursor\plugins\local\hasib-rns` (or push and refresh)
