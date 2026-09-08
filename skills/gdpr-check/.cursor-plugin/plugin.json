@@ -1,0 +1,12 @@
+{
+  "name": "gdpr-check",
+  "displayName": "GDPR Check",
+  "version": "1.0.0",
+  "description": "GDPR / data-protection review of code changes. Use when a change touches personal data — fields, forms, exports, emails, logs, analytics, cookies, or deletion logic.",
+  "author": {
+    "name": "hasibul-selise"
+  },
+  "repository": "https://github.com/hasibul-selise/hasib-rns",
+  "homepage": "https://github.com/hasibul-selise/hasib-rns",
+  "keywords": ["gdpr", "privacy", "pii", "compliance", "review"]
+}

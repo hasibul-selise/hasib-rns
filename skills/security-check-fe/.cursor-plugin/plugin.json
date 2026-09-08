@@ -1,0 +1,12 @@
+{
+  "name": "security-check-fe",
+  "displayName": "Frontend Security Check",
+  "version": "1.0.0",
+  "description": "Security review of frontend/client-side changes. Use before raising or merging a frontend PR, or when asked to security-check UI, component, template, or browser code.",
+  "author": {
+    "name": "hasibul-selise"
+  },
+  "repository": "https://github.com/hasibul-selise/hasib-rns",
+  "homepage": "https://github.com/hasibul-selise/hasib-rns",
+  "keywords": ["security", "frontend", "xss", "review"]
+}
