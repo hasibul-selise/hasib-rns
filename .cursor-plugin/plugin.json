@@ -1,0 +1,13 @@
+{
+  "name": "hasib-rns",
+  "displayName": "Hasib RNS",
+  "version": "1.0.0",
+  "description": "Review skills for Cursor: GDPR, backend security, and frontend security checks.",
+  "author": {
+    "name": "hasibul-selise"
+  },
+  "repository": "https://github.com/hasibul-selise/hasib-rns",
+  "homepage": "https://github.com/hasibul-selise/hasib-rns",
+  "keywords": ["gdpr", "privacy", "security", "review"],
+  "skills": "./skills/"
+}

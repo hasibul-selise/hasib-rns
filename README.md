@@ -26,13 +26,15 @@ Teammates then open **Customize** in the Cursor sidebar and install the plugins 
 
 ### Option B — install from Agent chat
 
-In Cursor Agent chat:
+This only works if the GitHub repo is **public**, or Cursor already has GitHub access to this private repo.
+
+In the chat box, pick the `/add-plugin` slash command (do not send it as a normal message):
 
 ```text
 /add-plugin hasibul-selise/hasib-rns
 ```
 
-Or paste the repo URL: `https://github.com/hasibul-selise/hasib-rns`
+Or paste: `https://github.com/hasibul-selise/hasib-rns`
 
 ### Option C — test locally (before or without publishing)
 
