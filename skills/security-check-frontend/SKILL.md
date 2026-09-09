@@ -1,5 +1,5 @@
 ---
-name: security-check-fe
+name: security-check-frontend
 description: Security review of frontend/client-side changes in any web project (Angular, React, Vue, Svelte, plain JS/TS). Use before raising or merging a frontend PR, or when asked to security-check UI, component, template, or browser code. Covers XSS, secrets, token handling, route/permission guards, redirects, browser storage, PII logging, dependencies.
 ---
 
@@ -62,7 +62,7 @@ Grep for candidates, then **read the surrounding code**. A hit is a finding only
 ## 5. Report
 
 ```
-## FE security check — <scope> (<framework>)
+## Frontend security check — <scope> (<framework>)
 Verdict: PASS | PASS WITH FINDINGS | FAIL
 Files reviewed: N
 

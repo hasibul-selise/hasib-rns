@@ -1,5 +1,5 @@
 ---
-name: security-check-be
+name: security-check-backend
 description: Security review of backend/server-side changes in any project (.NET, Node, Java, Python, Go, PHP). Use before raising or merging a backend PR, or when asked to security-check an API, controller, service, query, handler, or migration. Covers authn/authz, IDOR and tenant scoping, injection, secrets, crypto, data exposure, SSRF, uploads, dependencies.
 ---
 
@@ -56,7 +56,7 @@ For **every new or changed endpoint**, answer checks 1–3 explicitly — they a
 ## 5. Report
 
 ```
-## BE security check — <scope> (<stack>)
+## Backend security check — <scope> (<stack>)
 Verdict: PASS | PASS WITH FINDINGS | FAIL
 Endpoints reviewed: N
 

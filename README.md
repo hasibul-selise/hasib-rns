@@ -5,16 +5,16 @@ One Cursor plugin that installs all review skills:
 | Skill | What it does |
 | --- | --- |
 | **gdpr-check** | Data-protection review when a change touches personal data |
-| **security-check-be** | Security review of APIs, auth, queries, uploads, and server code |
-| **security-check-fe** | Security review of UI, XSS, tokens, storage, and route guards |
+| **security-check-backend** | Security review of APIs, auth, queries, uploads, and server code |
+| **security-check-frontend** | Security review of UI, XSS, tokens, storage, and route guards |
 
 ```
 hasib-rns/
 ├── .cursor-plugin/plugin.json
 └── skills/
     ├── gdpr-check/SKILL.md
-    ├── security-check-be/SKILL.md
-    └── security-check-fe/SKILL.md
+    ├── security-check-backend/SKILL.md
+    └── security-check-frontend/SKILL.md
 ```
 
 ## Install
@@ -41,7 +41,9 @@ Works if the repo is **public**, or Cursor has GitHub access to this private rep
 - Agent chat slash command: `/add-plugin hasibul-selise/hasib-rns`
 - Or **Customize** → install `hasib-rns`
 
-After install, open **Customize** and confirm one plugin: **Hasib RNS**, with all three skills. Invoke them with `/gdpr-check`, `/security-check-be`, or `/security-check-fe`.
+After install, open **Customize** and confirm **one plugin**: **Hasib RNS**. The Skills filter should list `gdpr-check`, `security-check-backend`, and `security-check-frontend`. Invoke them with `/gdpr-check`, `/security-check-backend`, or `/security-check-frontend`.
+
+If Customize shows those three names as **separate plugins** with **Error loading plugin**, they were published as three plugins (for example `plugins/gdpr-check` in a team marketplace). Uninstall those three, then install **hasib-rns** once. Do not add each `skills/<name>` folder as its own plugin.
 
 ## Add another skill
 

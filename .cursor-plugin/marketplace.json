@@ -1,0 +1,24 @@
+{
+  "name": "hasib-rns",
+  "owner": {
+    "name": "hasibul-selise"
+  },
+  "metadata": {
+    "description": "One Cursor plugin with GDPR, backend security, and frontend security review skills.",
+    "version": "1.2.0"
+  },
+  "plugins": [
+    {
+      "name": "hasib-rns",
+      "source": ".",
+      "description": "Review skills: gdpr-check, security-check-backend, and security-check-frontend.",
+      "version": "1.2.0",
+      "author": {
+        "name": "hasibul-selise"
+      },
+      "repository": "https://github.com/hasibul-selise/hasib-rns",
+      "keywords": ["gdpr", "privacy", "security", "review"],
+      "skills": "./skills/"
+    }
+  ]
+}
